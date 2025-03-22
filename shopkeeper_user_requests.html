@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Requests</title>
+    <link rel="stylesheet" href="shopkeeper.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Shopkeeper</h2>
+        <ul>
+            <li><a href="shopkeeper_dashboard.html">Dashboard</a></li>
+            <li><a href="shopkeeper_assigned_products.html">View Assigned Products</a></li>
+            <li><a href="shopkeeper_assign_product.html">Assign Product to User</a></li>
+            <li><a href="shopkeeper_view_users.html">View My Shop Users</a></li>
+            <li><a href="shopkeeper_user_requests.html" class="active">User Requests</a></li>
+            <li><a href="shopkeeper_profile.html">My Profile</a></li>
+            <li><a href="logout.html">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>User Product Requests</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Product Requested</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="requestTable">
+                <!-- Requests will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Simulated user product requests
+        let requests = [
+            { id: 1, name: "Rahul Sharma", email: "rahul@example.com", mobile: "9876543210", product: "Wheat", quantity: "5kg" },
+            { id: 2, name: "Priya Verma", email: "priya@example.com", mobile: "9998887776", product: "Sugar", quantity: "2kg" }
+        ];
+
+        function loadRequests() {
+            let table = document.getElementById("requestTable");
+            table.innerHTML = ""; // Clear previous data
+
+            requests.forEach((request, index) => {
+                let row = table.insertRow();
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${request.name}</td>
+                    <td>${request.email}</td>
+                    <td>${request.mobile}</td>
+                    <td>${request.product}</td>
+                    <td>${request.quantity}</td>
+                    <td>
+                        <button onclick="approveRequest(${request.id})">Approve</button>
+                        <button onclick="declineRequest(${request.id})">Decline</button>
+                    </td>
+                `;
+            });
+        }
+
+        function approveRequest(id) {
+            alert("Product request approved!");
+            requests = requests.filter(request => request.id !== id);
+            loadRequests();
+        }
+
+        function declineRequest(id) {
+            alert("Product request declined.");
+            requests = requests.filter(request => request.id !== id);
+            loadRequests();
+        }
+
+        window.onload = loadRequests;
+    </script>
+    
+        

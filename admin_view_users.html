@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Users</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <img src="../images/admin-icon.png" class="admin-icon">
+        <p>Admin</p>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="admin_create_shop.html">Create Shop User</a>
+        <a href="admin_assign_product.html">Assign Product</a>
+        <a href="admin_his.html">History</a>
+        <a href="admin_view_users.html">View Users</a>
+        <a href="admin_profile.html">My Profile</a>
+        <a href="../index.html">Logout</a>
+    </div>
+    
+    <div class="main-content">
+        <h2>User Dashboard</h2>
+        <button class="btn" onclick="addUser()">Add User</button>
+<table id="usersTable">
+
+        <table>
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>City</th>
+                <th>Contact Number</th>
+                <th>Product Details</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tbody id="usersTable">
+                <!-- Dynamic Data -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

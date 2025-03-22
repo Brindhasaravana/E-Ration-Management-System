@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View My Shop Users</title>
+    <link rel="stylesheet" href="shopkeeper.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Shopkeeper</h2>
+        <ul>
+            <li><a href="shopkeeper_dashboard.html">Dashboard</a></li>
+            <li><a href="shopkeeper_assigned_products.html">View Assigned Products</a></li>
+            <li><a href="shopkeeper_assign_product.html">Assign Product to User</a></li>
+            <li><a href="shopkeeper_view_users.html" class="active">View My Shop Users</a></li>
+            <li><a href="shopkeeper_profile.html">My Profile</a></li>
+            <li><a href="shopkeeper_logout.html">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>View My Shop Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile Number</th>
+                    <th>City</th>
+                    <th>Product Name</th>
+                    <th>Product Quantity</th>
+                    <th>Date & Time</th>
+                </tr>
+            </thead>
+            <tbody id="userTable">
+                <tr>
+                    <td>1</td>
+                    <td>stark</td>
+                    <td>stark@example.com</td>
+                    <td>9876543210</td>
+                    <td>padappa</td>
+                    <td>Rice</td>
+                    <td>10 kg</td>
+                    <td>2025-03-20 10:30 AM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

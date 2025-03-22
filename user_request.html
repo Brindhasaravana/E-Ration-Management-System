@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Product</title>
+    <link rel="stylesheet" href="user.css">
+</head>
+<body>
+    <header>Request Product</header>
+    <section>
+        <form id="requestForm">
+            <label for="product">Select Product:</label>
+            <select id="product" required>
+                <option value="Wheat">Wheat</option>
+                <option value="Sugar">Sugar</option>
+                <option value="Rice">Rice</option>
+                <option value="Kerosene">Kerosene</option>
+                <option value="Palm Oil">Palm Oil</option>
+            </select>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" min="1" required>
+
+            <button type="submit">Request Product</button>
+        </form>
+    </section>
+    <script>
+        document.getElementById("requestForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let product = document.getElementById("product").value;
+            let quantity = document.getElementById("quantity").value;
+    
+            // Get existing requests or create a new array
+            let requests = JSON.parse(localStorage.getItem("userRequests")) || [];
+    
+            // Push new request
+            requests.push({ product, quantity });
+    
+            // Save to localStorage
+            localStorage.setItem("userRequests", JSON.stringify(requests));
+    
+            alert("Request sent successfully!");
+            window.location.href = "user_dashboard.html";
+        });
+    </script>
+    
+
+    <script>
+        document.getElementById("requestForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let product = document.getElementById("product").value;
+            let quantity = document.getElementById("quantity").value;
+
+            let requestData = { product, quantity };
+
+            localStorage.setItem("userRequests", JSON.stringify(requestData));
+
+            alert("Request sent successfully!");
+            window.location.href = "user_dashboard.html";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Assigned Products</title>
+    <link rel="stylesheet" href="shopkeeper.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="shopkeeper_dashboard.html">Dashboard</a></li>
+            <li><a href="shopkeeper_assigned_products.html" class="active">View Assigned Products</a></li>
+            <li><a href="shopkeeper_assign_product.html">Assign Product to User</a></li>
+            <li><a href="shopkeeper_view_users.html">View My Shop Users</a></li>
+            <li><a href="shopkeeper_profile.html">My Profile</a></li>
+            <li><a href="shopkeeper_login.html">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h2>View Assigned Products</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Product Name</th>
+                    <th>MRP</th>
+                    <th>Available Quantity</th>
+                </tr>
+            </thead>
+            <tbody id="assigned-products">
+                <!-- Data will be inserted here using JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="shopkeeper.js"></script>
+</body>
+</html>

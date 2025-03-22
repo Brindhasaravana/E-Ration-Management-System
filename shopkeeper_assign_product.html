@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Product</title>
+    <link rel="stylesheet" href="shopkeeper.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Shopkeeper</h2>
+        <ul>
+            <li><a href="shopkeeper_dashboard.html">Dashboard</a></li>
+            <li><a href="shopkeeper_assigned_products.html">View Assigned Products</a></li>
+            <li><a href="shopkeeper_assign_product.html" class="active">Assign Product to User</a></li>
+            <li><a href="shopkeeper_view_users.html">View My Shop Users</a></li>
+            <li><a href="shopkeeper_profile.html">My Profile</a></li>
+            <li><a href="shopkeeper_logout.html">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Assign Product to User</h2>
+
+        <!-- Search User -->
+        <div class="search-container">
+            <input type="text" id="mobileNumber" placeholder="Enter Mobile Number">
+            <button onclick="searchUser()">Search</button>
+        </div>
+
+        <!-- Display User Details -->
+        <div class="user-details" id="userDetails">
+            <p><strong>Name:</strong> <span id="userName">-</span></p>
+            <p><strong>Email:</strong> <span id="userEmail">-</span></p>
+        </div>
+
+        <!-- Assign Product Form -->
+        <div class="assign-product-container">
+            <h3>Assign Product</h3>
+            <select id="productName">
+                <option value="wheat">Wheat</option>
+                <option value="sugar">Sugar</option>
+                <option value="kerosene">Kerosene</option>
+                <option value="palm_oil">Palm Oil</option>
+                <option value="rice">Rice</option>
+            </select>
+            <input type="number" id="assignQuantity" placeholder="Enter Quantity">
+            <button onclick="assignProduct()">Assign</button>
+        </div>
+
+        <!-- Assigned Products Table -->
+        <div class="assigned-products">
+            <h3>Assigned Products</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Product Name</th>
+                        <th>Available Quantity</th>
+                        <th>Assigned Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="assignedTable">
+                    <!-- Assigned products will be added here -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        // Simulated database of users
+        const users = [
+            { mobile: "9876543210", name: "stark", email: "stark@example.com" },
+            { mobile: "9998887776", name: "Priya Verma", email: "priya@example.com" }
+        ];
+
+        function searchUser() {
+            let mobile = document.getElementById("mobileNumber").value;
+            let user = users.find(u => u.mobile === mobile);
+
+            if (user) {
+                document.getElementById("userName").innerText = user.name;
+                document.getElementById("userEmail").innerText = user.email;
+            } else {
+                document.getElementById("userName").innerText = "Not Found";
+                document.getElementById("userEmail").innerText = "-";
+            }
+        }
+
+        function assignProduct() {
+            let productName = document.getElementById("productName").value;
+            let assignQuantity = document.getElementById("assignQuantity").value;
+
+            if (assignQuantity > 0) {
+                let table = document.getElementById("assignedTable");
+                let row = table.insertRow();
+                row.innerHTML = `
+                    <td>${table.rows.length}</td>
+                    <td>${productName}</td>
+                    <td>Available</td>
+                    <td>${assignQuantity}</td>
+                    <td><button onclick="removeRow(this)">Remove</button></td>
+                `;
+            } else {
+                alert("Enter a valid quantity!");
+            }
+        }
+
+        function removeRow(button) {
+            let row = button.parentElement.parentElement;
+            row.remove();
+        }
+    </script>
+
+</body>
+</html>
